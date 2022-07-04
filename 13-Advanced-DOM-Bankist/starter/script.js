@@ -445,76 +445,76 @@ images.forEach((image) => imageObserver.observe(image));
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
 
-const slider = document.querySelector(".slider");
-const slides = document.querySelectorAll(".slide");
-const dotContainer = document.querySelector(".dots");
-const createDots = (num) => {
-  for (let i = 0; i < num; i++) {
-    const dot = document.createElement("button");
-    i === 0 && dot.classList.add("dots__dot--active");
-    dot.dataset.slide = i;
-    dot.classList.add("dots__dot");
-    dotContainer.append(dot);
-  }
-};
+// const slider = document.querySelector(".slider");
+// const slides = document.querySelectorAll(".slide");
+// const dotContainer = document.querySelector(".dots");
+// const createDots = (num) => {
+//   for (let i = 0; i < num; i++) {
+//     const dot = document.createElement("button");
+//     i === 0 && dot.classList.add("dots__dot--active");
+//     dot.dataset.slide = i;
+//     dot.classList.add("dots__dot");
+//     dotContainer.append(dot);
+//   }
+// };
 
-createDots(3);
-const setTransform = (slide, num) => {
-  slide.style.transform = `translateX(${num}%)`;
-};
+// createDots(3);
+// const setTransform = (slide, num) => {
+//   slide.style.transform = `translateX(${num}%)`;
+// };
 
-const getTransform = (slide) =>
-  Number.parseInt(slide.style.transform.replace("translateX(", ""), 10);
+// const getTransform = (slide) =>
+//   Number.parseInt(slide.style.transform.replace("translateX(", ""), 10);
 
-slides.forEach((slide, i) => {
-  setTransform(slide, i * 100);
-});
-const move = (slides, sign) => {
-  const slides2 = [...slides];
-  if (sign > 0) slides2.reverse();
+// slides.forEach((slide, i) => {
+//   setTransform(slide, i * 100);
+// });
+// const move = (slides, sign) => {
+//   const slides2 = [...slides];
+//   if (sign > 0) slides2.reverse();
 
-  if (getTransform(slides2.at(-1)) !== 0) {
-    slides2.forEach((slide) =>
-      setTransform(slide, getTransform(slide) + 100 * sign),
-    );
-  } else {
-    slides2.forEach((slide) => {
-      const size = (slides2.length - 1) * 100;
-      setTransform(slide, getTransform(slide) - size * sign);
-    });
-  }
+//   if (getTransform(slides2.at(-1)) !== 0) {
+//     slides2.forEach((slide) =>
+//       setTransform(slide, getTransform(slide) + 100 * sign),
+//     );
+//   } else {
+//     slides2.forEach((slide) => {
+//       const size = (slides2.length - 1) * 100;
+//       setTransform(slide, getTransform(slide) - size * sign);
+//     });
+//   }
 
-  slides.forEach((slide, i) => {
-    const dots = dotContainer.children;
-    dots[i].classList.remove("dots__dot--active");
-    if (getTransform(slide) === 0) dots[i].classList.add("dots__dot--active");
-  });
-};
+//   slides.forEach((slide, i) => {
+//     const dots = dotContainer.children;
+//     dots[i].classList.remove("dots__dot--active");
+//     if (getTransform(slide) === 0) dots[i].classList.add("dots__dot--active");
+//   });
+// };
 
-slider.addEventListener("click", (e) => {
-  let btn = e.target.closest(".slider__btn");
-  if (!btn) btn = e.target.closest("dots");
-  if (!btn) return;
+// slider.addEventListener("click", (e) => {
+//   let btn = e.target.closest(".slider__btn");
+//   if (!btn) btn = e.target.closest("dots");
+//   if (!btn) return;
 
-  const arrSlides = [...slides];
-  if (btn.classList.contains("slider__btn--left")) move(arrSlides, 1);
-  if (btn.classList.contains("slider__btn--right")) move(arrSlides, -1);
+//   const arrSlides = [...slides];
+//   if (btn.classList.contains("slider__btn--left")) move(arrSlides, 1);
+//   if (btn.classList.contains("slider__btn--right")) move(arrSlides, -1);
 
-  const dots = btn.parentElement.children;
-  const clicked = btn.dataset.slide;
-  let counter = 0;
-  [...dots].map((dot) => {
-    if (dot.classList.contains("dots__dot--active")) counter = 0;
-    if (dot === clicked) return;
-  });
-  const active = counter;
-});
+//   const dots = btn.parentElement.children;
+//   const clicked = btn.dataset.slide;
+//   let counter = 0;
+//   [...dots].map((dot) => {
+//     if (dot.classList.contains("dots__dot--active")) counter = 0;
+//     if (dot === clicked) return;
+//   });
+//   const active = counter;
+// });
 
-document.addEventListener("keydown", (e) => {
-  const arrSlides = [...slides];
-  if (e.key === "ArrowLeft") move(arrSlides.reverse(), 1);
-  if (e.key === "ArrowRight") move(arrSlides, -1);
-});
+// document.addEventListener("keydown", (e) => {
+//   const arrSlides = [...slides];
+//   if (e.key === "ArrowLeft") move(arrSlides.reverse(), 1);
+//   if (e.key === "ArrowRight") move(arrSlides, -1);
+// });
 
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
