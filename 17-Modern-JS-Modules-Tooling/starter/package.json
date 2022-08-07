@@ -1,0 +1,26 @@
+{
+  "name": "17-modern-js-modules-tooling",
+  "source": "./index.html",
+  "version": "1.0.0",
+  "description": "First NPM project/exercise",
+  "main": "index.html",
+  "outputFormat": "esmodule",
+  "targets": {
+    "main": false
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx parcel index.html && npx parcel watch index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "core-js": "^3.24.1",
+    "leaflet": "^1.8.0",
+    "lodash-es": "^4.17.21",
+    "regenerator-runtime": "^0.13.9"
+  },
+  "devDependencies": {
+    "parcel": "^2.7.0"
+  }
+}
