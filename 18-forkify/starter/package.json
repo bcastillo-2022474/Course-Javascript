@@ -1,0 +1,35 @@
+{
+  "name": "forkify-project",
+  "version": "1.0.0",
+  "description": "Last Course Project!",
+  "type": "module",
+  "targets": {
+    "main": false,
+    "modern": {
+      "engines": {
+        "browsers": "Chrome 80"
+      }
+    },
+    "legacy": {
+      "engines": {
+        "browsers": "> 0.5%, last 2 versions, not dead"
+      }
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel ./index.html"
+  },
+  "author": "Joao Castillo",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-syntax-top-level-await": "^7.14.5",
+    "@parcel/transformer-sass": "^2.7.0",
+    "parcel": "^2.7.0"
+  },
+  "dependencies": {
+    "core-js": "^3.24.1",
+    "fracty": "^1.0.11",
+    "regenerator-runtime": "^0.13.9"
+  }
+}

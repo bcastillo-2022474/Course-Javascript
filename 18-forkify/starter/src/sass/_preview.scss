@@ -1,4 +1,8 @@
 .preview {
+  .hidden {
+    display: none;
+  }
+
   &__link {
     &:link,
     &:visited {
@@ -30,7 +34,7 @@
     backface-visibility: hidden;
 
     &::before {
-      content: '';
+      content: "";
       display: block;
       height: 100%;
       width: 100%;
