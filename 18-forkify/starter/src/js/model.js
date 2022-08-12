@@ -49,6 +49,10 @@ export const loadSearchResults = async (query) => {
   }
 };
 
+const persistBookmarks = () => {
+  localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
+};
+
 export const updateServings = (newServings) => {
   state.recipe.ingredients.forEach((ing) => {
     ing.quantity = (ing.quantity * newServings) / state.recipe.servings;
@@ -69,10 +73,32 @@ export const addBookmark = (recipe) => {
 
   // Mark recipe as Bookmark
   recipe.bookmarked = true;
+
+  // local Storage
+  persistBookmarks();
 };
 
 export const deleteBookmark = (id) => {
   const index = state.bookmarks.findIndex((el) => el.id === id);
   state.recipe.bookmarked = false;
   state.bookmarks.splice(index, 1);
+
+  // local Storage
+  persistBookmarks();
+};
+
+const init = () => {
+  const storage = localStorage.getItem("bookmarks");
+  if (storage) state.bookmarks = JSON.parse(storage);
+};
+
+init();
+
+export const uploadRecipe = async (newRecipe) => {
+  const ingredients = Object.entries(newRecipe).forEach((entry) =>
+    console.log(entry),
+  );
+  // const ingredients = Object.entries(newRecipe).filter(
+  //   (entry) => entry[0].startsWith("ingredients") && entry[1] !== "",
+  // );
 };
