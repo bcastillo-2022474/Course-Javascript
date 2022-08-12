@@ -8,7 +8,7 @@ import * as model from "./model";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { timeout } from "./helper";
-import { TIMEOUT_SEC } from "./config";
+import { CLOSE_MODAL_SEC, TIMEOUT_SEC } from "./config";
 
 // ////////////////////////////////////
 // if (module.hot) {
@@ -121,8 +121,28 @@ const controlRenderBookmark = () => {
   bookmarksView.render(model.state.bookmarks);
 };
 
-const controlUploadRecipe = (dataForm) => {
-  console.log(dataForm);
+const controlUploadRecipe = async (dataForm) => {
+  try {
+    // Render Spinner until the recipe is upload
+    addRecipesView.renderSpinner();
+    await model.uploadRecipe(dataForm);
+
+    // render the recipe
+    recipeView.render(model.state.recipe);
+
+    // render a succesfull message and close the Modal after some time
+    addRecipesView.renderMessage();
+    setTimeout(() => addRecipesView.toggleWindow(), CLOSE_MODAL_SEC);
+
+    // reRender Bookmarks
+    bookmarksView.render(model.state.bookmarks);
+
+    // change ID URL (Hash)
+    window.history.pushState(null, "", `#${model.state.recipe.id}`);
+  } catch (err) {
+    console.error(err);
+    addRecipesView.renderError(err.message);
+  }
 };
 
 const init = () => {

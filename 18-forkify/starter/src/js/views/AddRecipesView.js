@@ -6,29 +6,30 @@ class AddRecipeView extends View {
   #overlay = document.querySelector(".overlay");
   #btnOpen = document.querySelector(".nav__btn--add-recipe");
   #btnClose = document.querySelector(".btn--close-modal");
+  _message = "Recipe was succesfully Uploaded";
 
-  #toggleWindow() {
+  toggleWindow() {
     this.#overlay.classList.toggle("hidden");
     this.#window.classList.toggle("hidden");
   }
 
   addHandlerShowWindow() {
-    this.#btnOpen.addEventListener("click", this.#toggleWindow.bind(this));
+    this.#btnOpen.addEventListener("click", this.toggleWindow.bind(this));
   }
 
   addHandlerHideWindow() {
-    this.#btnClose.addEventListener("click", this.#toggleWindow.bind(this));
-    this.#overlay.addEventListener("click", this.#toggleWindow.bind(this));
+    this.#btnClose.addEventListener("click", this.toggleWindow.bind(this));
+    this.#overlay.addEventListener("click", this.toggleWindow.bind(this));
   }
 
   addHandlerUpload(handler) {
-    this._parentElement.addEventListener("submit", (e) => {
+    this._parentElement.addEventListener("submit", async (e) => {
       e.preventDefault();
       console.log(this);
       const dataArr = [...new FormData(this._parentElement)];
       const data = Object.fromEntries(dataArr);
       // console.log(data);
-      handler(data);
+      await handler(data);
     });
   }
 

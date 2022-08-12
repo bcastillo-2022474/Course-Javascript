@@ -6,7 +6,7 @@ export default class PreviewView extends View {
     const currId = window.location.hash.slice(1);
     return this._data
       .map(
-        ({ id, image, title, publisher }) =>
+        ({ id, image, title, publisher, key }) =>
           `
           <li class="preview ">
             <a class="preview__link ${
@@ -18,7 +18,7 @@ export default class PreviewView extends View {
               <div class="preview__data">
                 <h4 class="preview__title">${title}</h4>
                 <p class="preview__publisher">${publisher}</p>
-                <div class="preview__user-generated">
+                <div class="preview__user-generated ${key ? "" : "hidden"}">
                   <svg>
                     <use href="${icons}#icon-user"></use>
                   </svg>
