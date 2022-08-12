@@ -126,7 +126,6 @@ const controlUploadRecipe = (dataForm) => {
 };
 
 const init = () => {
-  debugger;
   bookmarksView.addHandlerRender(controlRenderBookmark);
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerServing(controlServings);
