@@ -156,14 +156,14 @@ document.addEventListener("keydown", (e) => {
 // console.log(document instanceof Node);
 // console.log(Object.getPrototypeOf(Node));
 
-const h1 = document.querySelector("h1");
+// const h1 = document.querySelector("h1");
 
-const alertH1 = (e) => {
-  alert("addEventListener: Great! you are reading the header");
-};
+// const alertH1 = (e) => {
+//   alert("addEventListener: Great! you are reading the header");
+// };
 
-h1.addEventListener("mouseenter", alertH1);
-setTimeout(() => h1.removeEventListener("mouseenter", alertH1), 4000);
+// h1.addEventListener("mouseenter", alertH1);
+// setTimeout(() => h1.removeEventListener("mouseenter", alertH1), 4000);
 
 // h1.onmouseenter = (e) => {
 //   alert("addEventListener: Great! you are reading the header");
@@ -253,47 +253,47 @@ btnScrollTo.addEventListener("click", (e) => {
 */
 
 // const h1 = document.querySelector("h1");
-console.log(h1.querySelectorAll(".highlight"));
-console.log(h1.children);
-console.log(h1.childNodes);
+// console.log(h1.querySelectorAll(".highlight"));
+// console.log(h1.children);
+// console.log(h1.childNodes);
 
-h1.firstElementChild.style.color = "white";
-h1.lastElementChild.style.color = "purple";
+// h1.firstElementChild.style.color = "white";
+// h1.lastElementChild.style.color = "purple";
 
-console.log(document.querySelector(".nav__link").parentNode);
-console.log(h1.parentNode);
+// console.log(document.querySelector(".nav__link").parentNode);
+// console.log(h1.parentNode);
 
 // h1.closest(".header").style.background =
 //   document.documentElement.style.setProperty("--gradient-primary", "");
 
 // console.log(document.documentElement.style.getPropertyValue("--color-primary"));
 
-h1.closest(".header").style.background = "var(--gradient-secondary)";
-console.log(document.querySelector(".header"));
+// h1.closest(".header").style.background = "var(--gradient-secondary)";
+// console.log(document.querySelector(".header"));
 
-h1.closest("h1").style.background = "var(--color-primary)";
+// h1.closest("h1").style.background = "var(--color-primary)";
 
 // console.log(h1.previousElementSibling);
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
+// console.log(h1.previousElementSibling);
+// console.log(h1.nextElementSibling);
 
-console.log(h1.previousSibling);
-console.log(h1.nextSibling);
+// console.log(h1.previousSibling);
+// console.log(h1.nextSibling);
 
-console.log(h1.parentNode.children); // this works
+// console.log(h1.parentNode.children); // this works
 
-console.log(h1.parentElement.children); // this works too
+// console.log(h1.parentElement.children); // this works too
 
 // [...h1.parentElement.children].forEach((el) => {
 //   if (el !== h1) el.style.transform = "scale(0.5)";
 // });
 
-console.log(h1.lastChild);
-console.log(h1.firstChild);
-console.log(h1.children[0]);
-console.log(h1.children[h1.children.length - 1]);
-console.log(h1.firstElementChild);
-console.log(h1.lastElementChild);
+// console.log(h1.lastChild);
+// console.log(h1.firstChild);
+// console.log(h1.children[0]);
+// console.log(h1.children[h1.children.length - 1]);
+// console.log(h1.firstElementChild);
+// console.log(h1.lastElementChild);
 
 /*
 operations.addEventListener("click", (e) => {
